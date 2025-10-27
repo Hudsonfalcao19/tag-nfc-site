@@ -33,6 +33,7 @@ body {
 /* Fallback para dispositivos móveis que não suportam background-attachment: fixed */
 @media (max-width: 768px) {
   body {
+    background-image: url('./background-mobile.png');
     background-attachment: scroll;
     background-size: cover;
     background-repeat: no-repeat;
