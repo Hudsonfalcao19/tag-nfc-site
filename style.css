@@ -282,7 +282,7 @@ h1 {
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* use dynamic viewport to avoid mobile browser chrome overlap */
   overflow: hidden;
   background-color: rgba(0,0,0,0.9);
   backdrop-filter: blur(8px);
@@ -299,10 +299,13 @@ h1 {
   color: #fff;
   margin: 2vh auto;
   padding: 2rem;
+  padding-top: max(1.5rem, env(safe-area-inset-top));
+  padding-bottom: max(2rem, env(safe-area-inset-bottom));
   border-radius: 20px;
   width: 95vw;
   max-width: 1200px;
-  height: 96vh;
+  height: auto;
+  max-height: calc(100dvh - 4vh);
   overflow-y: auto;
   box-shadow: 0 20px 60px rgba(0,0,0,0.8);
   text-align: center;
@@ -451,10 +454,14 @@ h1 {
 /* Responsividade do modal */
 @media (max-width: 768px) {
   .modal-content {
-    margin: 1vh auto;
-    width: 98vw;
-    height: 98vh;
-    padding: 1.5rem;
+    /* use small viewport units and safe-area to avoid overlay by browser bars */
+    margin: clamp(8px, 1.5vh, 16px) auto;
+    width: 96vw;
+    height: auto;
+    max-height: calc(100svh - 2 * clamp(8px, 1.5vh, 16px) - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    padding: 1.25rem;
+    padding-top: max(1rem, env(safe-area-inset-top));
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
     border-radius: 15px;
   }
   
@@ -479,7 +486,7 @@ h1 {
   }
   
   .close {
-    top: 15px;
+    top: max(12px, calc(env(safe-area-inset-top) + 8px));
     right: 20px;
     width: 40px;
     height: 40px;
