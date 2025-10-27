@@ -128,6 +128,23 @@ body {
   box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
 }
 
+/* Stars inside the Google review button */
+.btn-google .stars {
+  display: flex;
+  gap: 1px;
+  align-items: center;
+}
+
+.btn-google .stars .fa-star {
+  color: #fbbc05; /* Google yellow */
+  font-size: 0,1rem;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25));
+}
+
+.social-btn:hover .stars {
+  transform: scale(1.05);
+}
+
 .social-btn img, .pix-icon {
   width: 28px;
   height: 28px;
